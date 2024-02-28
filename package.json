@@ -17,6 +17,7 @@
     "url": "https://github.com/tagtwp/twpstrap/issues"
   },
   "devDependencies": {
+    "@wordpress/scripts": "^27.3.0",
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-compress": "^2.0.0",
