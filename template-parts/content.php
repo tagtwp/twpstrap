@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				_twpstrap_posted_on();
-				_twpstrap_posted_by();
+				twpstrap_posted_on();
+				twpstrap_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php _twpstrap_post_thumbnail(); ?>
+	<?php twpstrap_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php _twpstrap_entry_footer(); ?>
+		<?php twpstrap_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

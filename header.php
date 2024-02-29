@@ -38,10 +38,10 @@
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
-			$_twpstrap_description = get_bloginfo( 'description', 'display' );
-			if ( $_twpstrap_description || is_customize_preview() ) :
+			$twpstrap_description = get_bloginfo( 'description', 'display' );
+			if ( $twpstrap_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $_twpstrap_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="site-description"><?php echo $twpstrap_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 

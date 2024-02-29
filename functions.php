@@ -19,7 +19,7 @@ if ( ! defined( 'TWPSTRAP_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function _twpstrap_setup() {
+function twpstrap_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
@@ -49,7 +49,7 @@ function _twpstrap_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'twpstrap' ),
+			'primary' => esc_html__( 'Primary', 'twpstrap' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function _twpstrap_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'_twpstrap_custom_background_args',
+			'twpstrap_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -100,7 +100,7 @@ function _twpstrap_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', '_twpstrap_setup' );
+add_action( 'after_setup_theme', 'twpstrap_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,17 +109,17 @@ add_action( 'after_setup_theme', '_twpstrap_setup' );
  *
  * @global int $content_width
  */
-function _twpstrap_content_width() {
-	$GLOBALS['content_width'] = apply_filters( '_twpstrap_content_width', 640 );
+function twpstrap_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'twpstrap_content_width', 640 );
 }
-add_action( 'after_setup_theme', '_twpstrap_content_width', 0 );
+add_action( 'after_setup_theme', 'twpstrap_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function _twpstrap_widgets_init() {
+function twpstrap_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'twpstrap' ),
@@ -132,22 +132,22 @@ function _twpstrap_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', '_twpstrap_widgets_init' );
+add_action( 'widgets_init', 'twpstrap_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function _twpstrap_scripts() {
+function twpstrap_scripts() {
 	wp_enqueue_style( 'twpstrap-style', get_stylesheet_uri(), array(), TWPSTRAP_VERSION );
 	wp_style_add_data( 'twpstrap-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'twpstrap-navigation', get_template_directory_uri() . '/js/navigation.js', array(), TWPSTRAP_VERSION, true );
+	wp_enqueue_script( 'twpstrap-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), TWPSTRAP_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', '_twpstrap_scripts' );
+add_action( 'wp_enqueue_scripts', 'twpstrap_scripts' );
 
 /**
  * Implement the Custom Header feature.
