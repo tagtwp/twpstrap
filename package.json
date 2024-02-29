@@ -38,6 +38,7 @@
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'src/js/*.js'",
+    "lint:jquery": "grunt copy:jquery",
     "theme": "grunt theme"
   },
   "dependencies": {
