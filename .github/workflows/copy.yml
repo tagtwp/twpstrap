@@ -1,4 +1,4 @@
-name: fortawesome
+name: Lint Copy
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  fortawesome:
-    name: fortawesome
+  lint-copy:
+    name: Lint Copy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the git repository
@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-node@v1
       - name: npm install
         run: npm install
-      - name: fortawesome
-        run: npm run fortawesome
+      - name: Lint Copy
+        run: npm run lint:copy
