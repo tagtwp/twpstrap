@@ -51,7 +51,7 @@ module.exports = function (grunt) {
 
         // Copy the plugin into the build directory
         copy: {
-            theme: {
+            build: {
                 src: [
                     '*.php', // Include all files php
                     '*.css', // Include all files css
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
 
         // Compress build directory into <name>.zip and <name>-<version>.zip
         compress: {
-            theme: {
+            build: {
                 options: {
                     mode: 'zip',
                     archive: './build/theme/<%= pkg.name %>-v<%= pkg.version %>.zip',
@@ -107,5 +107,5 @@ module.exports = function (grunt) {
 
     // Build task(s).
     grunt.registerTask('theme', ['copy:fortawesome', 'copy:jquery', 'copy:bootstrap']);
-    grunt.registerTask('build', ['copy:theme', 'compress:theme']);
+    grunt.registerTask('build', ['copy:build', 'compress:build']);
 };

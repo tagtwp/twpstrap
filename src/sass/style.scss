@@ -11,23 +11,38 @@ License: GNU General Public License v3 or later
 License URI: LICENSE
 Text Domain: twpstrap
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Generic
-	- Normalize
-	- Box sizing
+# Abstracts
+  # Mixins
+      - Mixins
+  # Variables
+      - Colors
+      - Columns
+      - Structure
+      - Typography
+# Vendors
+    - Bootstrap
+    - Jquery
+    - fontawesome
 # Base
 	- Typography
 	- Elements
 	- Links
 	- Forms
+# Utilities
+    - Container
+    - Main
 ## Layouts
+# Pages
+    - Index
+    - Single
+    - 404
+    - Archive
+    - Search
 # Components
 	- Navigation
 	- Posts and pages
@@ -37,10 +52,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Captions
 	- Galleries
 # plugins
-	- Jetpack infinite scroll
-# Utilities
-	- Accessibility
-	- Alignments
 
 --------------------------------------------------------------*/
 
@@ -48,21 +59,19 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "abstracts/abstracts";
 
 /*--------------------------------------------------------------
-# Generic
+# Vendors
 --------------------------------------------------------------*/
-
-/* Normalize
---------------------------------------------- */
-@import "generic/normalize";
-
-/* Box sizing
---------------------------------------------- */
-@import "generic/box-sizing";
 
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
 @import "base/base";
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+@import "utilities/container";
+@import "utilities/main";
 
 /*--------------------------------------------------------------
 # Layouts
@@ -79,18 +88,4 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Plugins
 --------------------------------------------------------------*/
 
-/* Jetpack infinite scroll
---------------------------------------------- */
-@import "plugins/jetpack/infinite-scroll";
 
-/*--------------------------------------------------------------
-# Utilities
---------------------------------------------------------------*/
-
-/* Accessibility
---------------------------------------------- */
-@import "utilities/accessibility";
-
-/* Alignments
---------------------------------------------- */
-@import "utilities/alignments";
