@@ -1,93 +1,85 @@
 module.exports = function (grunt) {
+
     // Load multiple grunt tasks using globbing patterns
     require('load-grunt-tasks')(grunt);
 
     // Project configuration.
     grunt.initConfig({
+
         pkg: grunt.file.readJSON('package.json'),
 
-        // Copy the front into the build directory
-        copy: {
-            front: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'front/',
-                        src: ['assets/**', '*.html'],
-                        dest: 'build/<%= pkg.name %>/',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/animate.css/animate.css'],
-                        dest: 'front/assets/css/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/swiper/swiper-bundle.min.css'],
-                        dest: 'front/assets/css/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/swiper/swiper-bundle.min.js'],
-                        dest: 'front/assets/js/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/wow.js-juzi/dist/wow.min.js'],
-                        dest: 'front/assets/js/',
-                        filter: 'isFile',
-                    },
+        checktextdomain: {
+            options: {
+                text_domain: 'twpstrap',
+                correct_domain: true,
+                keywords: [
+                    '__:1,2d',
+                    '_e:1,2d',
+                    '_x:1,2c,3d',
+                    'esc_html__:1,2d',
+                    'esc_html_e:1,2d',
+                    'esc_html_x:1,2c,3d',
+                    'esc_attr__:1,2d',
+                    'esc_attr_e:1,2d',
+                    'esc_attr_x:1,2c,3d',
+                    '_ex:1,2c,3d',
+                    '_n:1,2,3,4d',
+                    '_nx:1,2,4c,5d',
+                    '_n_noop:1,2,3d',
+                    '_nx_noop:1,2,3c,4d',
+                    ' __ngettext:1,2,3d',
+                    '__ngettext_noop:1,2,3d',
+                    '_c:1,2d',
+                    '_nc:1,2,4c,5d',
                 ],
             },
-            theme: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/animate.css/animate.css'],
-                        dest: 'theme/assets/css/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/swiper/swiper-bundle.min.css'],
-                        dest: 'theme/assets/css/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/swiper/swiper-bundle.min.js'],
-                        dest: 'theme/assets/js/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['node_modules/wow.js-juzi/dist/wow.min.js'],
-                        dest: 'theme/assets/js/',
-                        filter: 'isFile',
-                    },
+            files: {
+                src: [
+                    '**/*.php', // Include all files
+                    '!node_modules/**', // Exclude node_modules/
+                    '!build/**', // Exclude build/
                 ],
+                expand: true,
             },
         },
+
+        // Clean up build directory
+        clean: {
+            main: [ 'build/**' ],
+            repo: [ 'build/<%= pkg.name %>-public/**' ],
+        },
+
+        // Copy the plugin into the build directory
+        copy: {
+            theme: {
+                src: [
+                    '*.php', // Include all files php
+                    '*.css', // Include all files css
+                    './inc/**/*', // Exclude inc/
+                    './js/**/*', // Exclude js/
+                    './languages/**/*', // Exclude languages/
+                    './template-parts/**/*', // Exclude template-parts/
+                    '!node_modules/**', // Exclude node_modules/
+                    '!vendor/**', // Exclude vendor/
+                    '!sass/**', // Exclude sass/
+                    '!src/**', // Exclude src/
+                    '!.github/**', // Exclude .github/
+                    '!.idea/**', // Exclude .idea/
+                    '!build/**', // Exclude build/
+                ],
+                dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
+            },
+        },
+
         // Compress build directory into <name>.zip and <name>-<version>.zip
         compress: {
-            front: {
+            theme: {
                 options: {
                     mode: 'zip',
-                    archive: './build/<%= pkg.name %>-v<%= pkg.version %>.zip',
+                    archive: './build/theme/<%= pkg.name %>-v<%= pkg.version %>.zip',
                 },
                 expand: true,
-                cwd: 'build/<%= pkg.name %>/',
+                cwd: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
                 src: ['**/*'],
                 dest: '<%= pkg.name %>/',
             },
@@ -95,7 +87,5 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('front', ['copy:front:files']);
-    grunt.registerTask('front-build', ['compress:front']);
-    grunt.registerTask('theme', ['copy:theme']);
+    grunt.registerTask('theme', ['copy:theme', 'compress:theme']);
 };
