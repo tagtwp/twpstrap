@@ -80,6 +80,15 @@ module.exports = function (grunt) {
                 ],
                 dest: 'assets/fonts/fortawesome/',
             },
+            jquery: {
+                expand: true,
+                cwd: 'node_modules/jquery/dist/',
+                src: [
+                    'jquery.js',
+                    'jquery.min.js',
+                ],
+                dest: 'assets/js/',
+            },
         },
 
         // Compress build directory into <name>.zip and <name>-<version>.zip
@@ -98,6 +107,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('fortawesome', ['copy:fortawesome']);
+    grunt.registerTask('theme', ['copy:fortawesome', 'copy:jquery']);
     grunt.registerTask('build', ['copy:theme', 'compress:theme']);
 };
