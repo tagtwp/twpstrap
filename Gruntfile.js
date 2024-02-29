@@ -55,6 +55,7 @@ module.exports = function (grunt) {
                 src: [
                     '*.php', // Include all files php
                     '*.css', // Include all files css
+                    './assets/**/*', // Exclude assets/
                     './inc/**/*', // Exclude inc/
                     './js/**/*', // Exclude js/
                     './languages/**/*', // Exclude languages/
@@ -68,6 +69,16 @@ module.exports = function (grunt) {
                     '!build/**', // Exclude build/
                 ],
                 dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
+            },
+            fortawesome: {
+                expand: true,
+                cwd: 'node_modules/@fortawesome/fontawesome-free/',
+                src: [
+                    'css/*',
+                    'js/*',
+                    'webfonts/*',
+                ],
+                dest: 'assets/fonts/fortawesome/',
             },
         },
 
@@ -87,5 +98,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['copy:theme', 'compress:theme']);
+    grunt.registerTask('fortawesome', ['copy:fortawesome']);
+    grunt.registerTask('build', ['copy:theme', 'compress:theme']);
 };
