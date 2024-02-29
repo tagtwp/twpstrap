@@ -1,4 +1,4 @@
-name: Lint Copy
+name: theme
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  lint-copy:
-    name: Lint Copy
+  theme:
+    name: theme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the git repository
@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-node@v1
       - name: npm install
         run: npm install
-      - name: Lint Copy
-        run: npm run lint:copy
+      - name: theme
+        run: npm run theme
