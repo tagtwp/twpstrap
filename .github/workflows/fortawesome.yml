@@ -1,4 +1,4 @@
-name: jquery
+name: fortawesome
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  jquery:
-    name: jquery
+  fortawesome:
+    name: fortawesome
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the git repository
@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-node@v1
       - name: npm install
         run: npm install
-      - name: jquery
-        run: npm run copy:jquery
+      - name: fortawesome
+        run: npm run copy:fortawesome
