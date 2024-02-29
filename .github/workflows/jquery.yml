@@ -1,0 +1,23 @@
+name: jquery
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  lint-jquery:
+    name: Lint jquery
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the git repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+      - name: npm install
+        run: npm install
+      - name: Lint jquery
+        run: npm run lint:jquery
