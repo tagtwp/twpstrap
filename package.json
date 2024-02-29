@@ -20,8 +20,13 @@
     "@wordpress/scripts": "^27.3.0",
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-composer": "^0.4.5",
+    "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
+    "grunt-force-task": "^3.0.0",
+    "grunt-replace": "^2.0.2",
     "load-grunt-tasks": "^5.1.0",
     "npm-run-all": "^4.1.5",
     "bootstrap": "~5.3.3",
@@ -33,6 +38,6 @@
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",
-    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
+    "theme": "grunt theme"
   }
 }
