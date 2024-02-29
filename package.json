@@ -18,9 +18,11 @@
   },
   "devDependencies": {
     "@wordpress/scripts": "^27.3.0",
+    "bootstrap": "~5.3.3",
+    "browser-sync": "^3.0.2",
     "grunt": "^1.6.1",
-    "grunt-cli": "^1.4.3",
     "grunt-checktextdomain": "^1.0.1",
+    "grunt-cli": "^1.4.3",
     "grunt-composer": "^0.4.5",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-compress": "^2.0.0",
@@ -28,16 +30,17 @@
     "grunt-force-task": "^3.0.0",
     "grunt-replace": "^2.0.2",
     "load-grunt-tasks": "^5.1.0",
-    "npm-run-all": "^4.1.5",
-    "bootstrap": "~5.3.3",
-    "browser-sync": "^3.0.2"
+    "npm-run-all": "^4.1.5"
   },
   "scripts": {
     "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
     "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
-    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "lint:js": "wp-scripts lint-js 'src/js/*.js'",
     "theme": "grunt theme"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1"
   }
 }
