@@ -47,11 +47,11 @@ function twpstrap_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'main-menu' => esc_html__( 'Main menu', 'twpstrap' ),
-		)
-	);
+//	register_nav_menus(
+//		array(
+//			'main-menu' => esc_html__( 'Main menu', 'twpstrap' ),
+//		)
+//	);
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -185,4 +185,4 @@ if ( class_exists( 'WooCommerce' ) ) {
 /**
  * Bootstrap 5 wp_nav_menu walker
  */
-require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+require get_template_directory() . '/inc/class-twpstrap-navwalker.php';
