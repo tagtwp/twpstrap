@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 src: [
                     '*.php', // Include all files php
                     '*.css', // Include all files css
-                    './assets/**/*', // Exclude assets/
+                    './src/assets/**/*', // Exclude assets/
                     './inc/**/*', // Exclude inc/
                     './js/**/*', // Exclude js/
                     './languages/**/*', // Exclude languages/
@@ -70,22 +70,33 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
             },
-            fortawesome: {
+            theme: {
                 files: [
-                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/css/all.css'], dest: 'assets/css/', filter: 'isFile'},
-                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/js/all.js'], dest: 'assets/js/', filter: 'isFile'},
-                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/webfonts/*'], dest: 'assets/webfonts/', filter: 'isFile'},
-                ],
-            },
-            jquery: {
-                files: [
-                    {expand: true, flatten: true, src: ['node_modules/jquery/dist/jquery.js'], dest: 'assets/js/', filter: 'isFile'},
-                ],
-            },
-            bootstrap: {
-                files: [
-                    {expand: true, flatten: true, src: ['node_modules/bootstrap/dist/css/bootstrap.css'], dest: 'assets/css/', filter: 'isFile'},
-                    {expand: true, flatten: true, src: ['node_modules/bootstrap/dist/js/bootstrap.js'], dest: 'assets/js/', filter: 'isFile'},
+                    {
+                        expand: true,
+                        flatten: true,
+                        cwd: 'src/',
+                        src: ['assets/**/*'],
+                        dest: 'assets/',
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/@fortawesome/fontawesome-free/',
+                        src: ['**/*'],
+                        dest: 'src/sass/vendors/fontawesome/',
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/jquery/',
+                        src: ['**/*'],
+                        dest: 'src/js/jquery/',
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/bootstrap/',
+                        src: ['**/*'],
+                        dest: 'src/sass/vendors/bootstrap/',
+                    }
                 ],
             },
         },
@@ -106,6 +117,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['copy:fortawesome', 'copy:jquery', 'copy:bootstrap']);
+    grunt.registerTask('theme', ['copy:theme']);
     grunt.registerTask('build', ['copy:build', 'compress:build']);
 };
