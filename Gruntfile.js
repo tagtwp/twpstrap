@@ -71,23 +71,22 @@ module.exports = function (grunt) {
                 dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
             },
             fortawesome: {
-                expand: true,
-                cwd: 'node_modules/@fortawesome/fontawesome-free/',
-                src: [
-                    'css/*',
-                    'js/*',
-                    'webfonts/*',
+                files: [
+                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/css/all.css'], dest: 'assets/css/', filter: 'isFile'},
+                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/js/all.js'], dest: 'assets/js/', filter: 'isFile'},
+                    {expand: true, flatten: true, src: ['node_modules/@fortawesome/fontawesome-free/webfonts/*'], dest: 'assets/webfonts/', filter: 'isFile'},
                 ],
-                dest: 'assets/fonts/fortawesome/',
             },
             jquery: {
-                expand: true,
-                cwd: 'node_modules/jquery/dist/',
-                src: [
-                    'jquery.js',
-                    'jquery.min.js',
+                files: [
+                    {expand: true, flatten: true, src: ['node_modules/jquery/dist/jquery.js'], dest: 'assets/js/', filter: 'isFile'},
                 ],
-                dest: 'assets/js/',
+            },
+            bootstrap: {
+                files: [
+                    {expand: true, flatten: true, src: ['node_modules/bootstrap/dist/css/bootstrap.css'], dest: 'assets/css/', filter: 'isFile'},
+                    {expand: true, flatten: true, src: ['node_modules/bootstrap/dist/js/bootstrap.js'], dest: 'assets/js/', filter: 'isFile'},
+                ],
             },
         },
 
@@ -107,6 +106,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['copy:fortawesome', 'copy:jquery']);
+    grunt.registerTask('theme', ['copy:fortawesome', 'copy:jquery', 'copy:bootstrap']);
     grunt.registerTask('build', ['copy:theme', 'compress:theme']);
 };
