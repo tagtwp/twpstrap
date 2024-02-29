@@ -1,4 +1,4 @@
-name: theme
+name: Theme
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   theme:
-    name: theme
+    name: Theme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the git repository
@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-node@v1
       - name: npm install
         run: npm install
-      - name: theme
+      - name: Theme
         run: npm run theme
