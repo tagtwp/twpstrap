@@ -49,7 +49,7 @@ function twpstrap_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'primary' => esc_html__( 'Primary', 'twpstrap' ),
+			'main-menu' => esc_html__( 'Main menu', 'twpstrap' ),
 		)
 	);
 
@@ -182,3 +182,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * Bootstrap 5 wp_nav_menu walker
+ */
+require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
