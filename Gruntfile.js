@@ -46,30 +46,11 @@ module.exports = function (grunt) {
         // Clean up build directory
         clean: {
             main: [ 'build/**' ],
-            repo: [ 'build/<%= pkg.name %>-public/**' ],
+            repo: [ 'build/<%= pkg.name %>/**' ],
         },
 
         // Copy the plugin into the build directory
         copy: {
-            build: {
-                src: [
-                    '*.php', // Include all files php
-                    '*.css', // Include all files css
-                    './src/assets/**/*', // Exclude assets/
-                    './inc/**/*', // Exclude inc/
-                    './js/**/*', // Exclude js/
-                    './languages/**/*', // Exclude languages/
-                    './template-parts/**/*', // Exclude template-parts/
-                    '!node_modules/**', // Exclude node_modules/
-                    '!vendor/**', // Exclude vendor/
-                    '!sass/**', // Exclude sass/
-                    '!src/**', // Exclude src/
-                    '!.github/**', // Exclude .github/
-                    '!.idea/**', // Exclude .idea/
-                    '!build/**', // Exclude build/
-                ],
-                dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
-            },
             theme: {
                 files: [
                     {
@@ -98,6 +79,25 @@ module.exports = function (grunt) {
                         dest: 'src/sass/vendors/bootstrap/',
                     }
                 ],
+            },
+            build: {
+                src: [
+                    '*.php', // Include all files php
+                    '*.css', // Include all files css
+                    './src/assets/**/*', // Exclude assets/
+                    './inc/**/*', // Exclude inc/
+                    './js/**/*', // Exclude js/
+                    './languages/**/*', // Exclude languages/
+                    './template-parts/**/*', // Exclude template-parts/
+                    '!node_modules/**', // Exclude node_modules/
+                    '!vendor/**', // Exclude vendor/
+                    '!sass/**', // Exclude sass/
+                    '!src/**', // Exclude src/
+                    '!.github/**', // Exclude .github/
+                    '!.idea/**', // Exclude .idea/
+                    '!build/**', // Exclude build/
+                ],
+                dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
             },
         },
 
