@@ -91,12 +91,18 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            dist: {
+            script: {
                 src: [
                     'node_modules/bootstrap/dist/js/bootstrap.js',
                     'node_modules/jquery/dist/jquery.js'
                 ],
                 dest: 'src/js/main.js',
+            },
+            style: {
+                src: [
+                    'src/assets/css/style.css'
+                ],
+                dest: 'style.css',
             },
         },
 
