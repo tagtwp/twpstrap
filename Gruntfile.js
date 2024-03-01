@@ -55,36 +55,25 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        flatten: true,
-                        cwd: 'src/',
-                        src: ['assets/**/*'],
-                        dest: 'assets/',
-                    },
-                    {
-                        expand: true,
                         cwd: 'node_modules/@fortawesome/fontawesome-free/',
                         src: ['**/*'],
-                        dest: 'src/sass/vendors/fontawesome/',
+                        dest: 'src/assets/fonts/fontawesome/',
                     },
                     {
                         expand: true,
-                        cwd: 'node_modules/jquery/',
+                        cwd: 'src/assets/',
                         src: ['**/*'],
-                        dest: 'src/js/jquery/',
-                    },
-                    {
-                        expand: true,
-                        cwd: 'node_modules/bootstrap/',
-                        src: ['**/*'],
-                        dest: 'src/sass/vendors/bootstrap/',
+                        dest: 'assets/',
                     }
                 ],
             },
+
+            // build directory
             build: {
                 src: [
                     '*.php', // Include all files php
                     '*.css', // Include all files css
-                    './src/assets/**/*', // Exclude assets/
+                    './assets/**/*', // Exclude assets/
                     './inc/**/*', // Exclude inc/
                     './js/**/*', // Exclude js/
                     './languages/**/*', // Exclude languages/
@@ -99,6 +88,33 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/theme/<%= pkg.name %>-v<%= pkg.version %>/',
             },
+        },
+
+        concat: {
+            dist: {
+                src: [
+                    'node_modules/bootstrap/dist/js/bootstrap.js',
+                    'node_modules/jquery/dist/jquery.js'
+                ],
+                dest: 'src/js/main.js',
+            },
+        },
+
+        uglify: {
+            main: {
+                files: {
+                    'src/assets/js/main.js': ['src/js/main.js']
+                }
+            }
+        },
+
+        sass: {
+            dist: {
+                files: {
+                    'src/assets/css/style.css': 'src/sass/style.scss',
+                    'style.css': 'src/sass/style.scss'
+                }
+            }
         },
 
         // Compress build directory into <name>.zip and <name>-<version>.zip
@@ -117,6 +133,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['copy:theme']);
+    grunt.registerTask('theme', ['concat', 'uglify', 'sass', 'copy:theme']);
     grunt.registerTask('build', ['copy:build', 'compress:build']);
 };
