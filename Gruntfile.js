@@ -108,15 +108,6 @@ module.exports = function (grunt) {
             }
         },
 
-        sass: {
-            dist: {
-                files: {
-                    'src/assets/css/style.css': 'src/sass/style.scss',
-                    'style.css': 'src/sass/style.scss'
-                }
-            }
-        },
-
         // Compress build directory into <name>.zip and <name>-<version>.zip
         compress: {
             build: {
@@ -133,6 +124,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['concat', 'uglify', 'sass', 'copy:theme']);
+    grunt.registerTask('theme', ['concat', 'uglify', 'copy:theme']);
     grunt.registerTask('build', ['copy:build', 'compress:build']);
 };
