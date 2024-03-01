@@ -73,6 +73,7 @@ module.exports = function (grunt) {
                 src: [
                     '*.php', // Include all files php
                     '*.css', // Include all files css
+                    'screenshot.png',
                     './assets/**/*', // Exclude assets/
                     './inc/**/*', // Exclude inc/
                     './js/**/*', // Exclude js/
