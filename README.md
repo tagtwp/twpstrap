@@ -46,7 +46,7 @@ To start using all the tools that come with `twpstrap`  you need to install the 
 
 ```sh
 $ composer install
-$ npm install
+$ npm install && npm run dev
 ```
 
 ### Available CLI commands
