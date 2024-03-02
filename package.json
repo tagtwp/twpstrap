@@ -43,7 +43,7 @@
     "compile:css": "node-sass src/sass/ -o ./assets/css && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
     "compile:style": "node-sass src/sass/ -o ./ && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
     "compile": "run-p \"compile:**\"",
-    "theme": "npm run compile && grunt theme",
+    "dev": "npm run compile && grunt theme",
     "lint:scss": "wp-scripts lint-style \"src/sass/**/*.scss\"",
     "lint:js": "wp-scripts lint-js \"src/js/*.js\"",
     "build": "grunt build"

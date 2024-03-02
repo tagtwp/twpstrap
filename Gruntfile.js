@@ -105,7 +105,7 @@ module.exports = function (grunt) {
         uglify: {
             main: {
                 files: {
-                    'src/assets/js/main.js': ['src/js/main.js']
+                    'assets/js/main.js': ['assets/js/main.js']
                 }
             }
         },

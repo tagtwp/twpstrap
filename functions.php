@@ -140,6 +140,8 @@ add_action( 'widgets_init', 'twpstrap_widgets_init' );
 function twpstrap_scripts() {
 	wp_enqueue_style( 'twpstrap-style', get_stylesheet_uri(), array(), TWPSTRAP_VERSION );
 
+	wp_enqueue_style( 'depwp-fontawesome', get_template_directory_uri () .  '/assets/fonts/fontawesome/css/all.css');
+
 	wp_enqueue_script( 'twpstrap-main', get_template_directory_uri() . '/assets/js/main.js', array(), TWPSTRAP_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
