@@ -37,7 +37,7 @@
   },
   "scripts": {
     "watch:scss": "node-sass src/sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
-    "watch:browser-sync": "browser-sync start --server --files \"**\" --no-notify --no-inject-changes",
+    "watch:browser-sync": "browser-sync start --server --files \"**/\" --no-notify --no-inject-changes",
     "watch": "run-p \"watch:**\"",
     "compile:css": "node-sass src/sass/ -o ./ && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
     "theme": "npm run compile:css && grunt theme",
