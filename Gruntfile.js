@@ -56,15 +56,9 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'node_modules/@fortawesome/fontawesome-free/',
-                        src: ['**/*'],
-                        dest: 'src/assets/fonts/fontawesome/',
+                        src: ['css/all.css', 'webfonts/**/*'],
+                        dest: 'assets/fonts/fontawesome/',
                     },
-                    {
-                        expand: true,
-                        cwd: 'src/assets/',
-                        src: ['**/*'],
-                        dest: 'assets/',
-                    }
                 ],
             },
 
@@ -94,16 +88,17 @@ module.exports = function (grunt) {
         concat: {
             script: {
                 src: [
+                    'node_modules/jquery/dist/jquery.js',
                     'node_modules/bootstrap/dist/js/bootstrap.js',
-                    'node_modules/jquery/dist/jquery.js'
+                    'src/js/index.js'
                 ],
-                dest: 'src/js/main.js',
+                dest: 'assets/js/main.js',
             },
             style: {
                 src: [
-                    'src/assets/css/style.css'
+                    './style.css',
                 ],
-                dest: 'style.css',
+                dest: 'assets/css/style.css',
             },
         },
 
@@ -131,6 +126,6 @@ module.exports = function (grunt) {
     });
 
     // Build task(s).
-    grunt.registerTask('theme', ['concat', 'uglify', 'copy:theme']);
-    grunt.registerTask('build', ['copy:build', 'compress:build']);
+    grunt.registerTask('theme', ['concat', 'copy:theme']);
+    grunt.registerTask('build', ['uglify', 'copy:build', 'compress:build']);
 };
