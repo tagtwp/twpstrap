@@ -36,11 +36,14 @@
     "node-sass": "^9.0.0"
   },
   "scripts": {
-    "watch:scss": "node-sass src/sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "watch:scss": "node-sass src/sass/ -o ./assets/css --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "watch:style": "node-sass src/sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
     "watch:browser-sync": "browser-sync start --server --files \"**/\" --no-notify --no-inject-changes",
     "watch": "run-p \"watch:**\"",
-    "compile:css": "node-sass src/sass/ -o ./ && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
-    "theme": "npm run compile:css && grunt theme",
+    "compile:css": "node-sass src/sass/ -o ./assets/css && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
+    "compile:style": "node-sass src/sass/ -o ./ && stylelint \"*.css\" --fix || true && stylelint \"*.css\" --fix",
+    "compile": "run-p \"compile:**\"",
+    "theme": "npm run compile && grunt theme",
     "lint:scss": "wp-scripts lint-style \"src/sass/**/*.scss\"",
     "lint:js": "wp-scripts lint-js \"src/js/*.js\"",
     "build": "grunt build"

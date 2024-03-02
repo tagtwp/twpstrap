@@ -89,17 +89,17 @@ module.exports = function (grunt) {
             script: {
                 src: [
                     'node_modules/jquery/dist/jquery.js',
-                    'node_modules/bootstrap/dist/js/bootstrap.js',
+                    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
                     'src/js/index.js'
                 ],
                 dest: 'assets/js/main.js',
             },
-            style: {
-                src: [
-                    './style.css',
-                ],
-                dest: 'assets/css/style.css',
-            },
+            // style: {
+            //     src: [
+            //         './style.css',
+            //     ],
+            //     dest: 'assets/css/style.css',
+            // },
         },
 
         uglify: {
